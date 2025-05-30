@@ -1,0 +1,23 @@
+# Définir les infos utilisateur
+$UserPrincipalName = "jdoe@domaine.com" 
+$DisplayName = "John Doe"
+$MailNickname = "jdoe"
+$PasswordProfile = @{
+    ForceChangePasswordNextSignIn = $true
+    Password = "MotDePasseComplexe123!"
+}
+
+# Créer l'utilisateur
+New-MgUser -AccountEnabled $true `
+           -DisplayName $DisplayName `
+           -MailNickname $MailNickname `
+           -UserPrincipalName $UserPrincipalName `
+           -PasswordProfile $PasswordProfile `
+           -UsageLocation "FR"
+
+# Récupérer les SKU disponibles
+Get-MgSubscribedSku
+
+# Affecter une licence
+$SkuId = "<SkuId>"  # Exemple : "yourtenant:ENTERPRISEPACK" pour E3
+Set-MgUserLicense -UserId $UserPrincipalName -AddLicenses @{SkuId = $SkuId} -RemoveLicenses @()
