@@ -1,0 +1,14 @@
+# === Connexion à Microsoft Teams ===
+Connect-MicrosoftTeams
+
+🛠️ Créer un Team
+
+$team = New-Team -DisplayName "Nom de l'équipe" -Description "Description de l'équipe" -Visibility Private
+
+# Ajouter un propriétaire
+
+Add-TeamUser -GroupId $team.GroupId -User user1@domaine.com -Role Owner
+
+# Ajouter un membre
+
+Add-TeamUser -GroupId $team.GroupId -User user2@domaine.com -Role Member
