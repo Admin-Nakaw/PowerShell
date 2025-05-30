@@ -1,0 +1,13 @@
+# Variables
+$userId = "jdoe@mondomaine.com"
+$skuId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"  # à récupérer depuis Get-MgSubscribedSku
+
+# Créer la structure d'ajout de licence
+$addLicenses = @(
+    @{
+        SkuId = $skuId
+    }
+)
+
+# Assigner la licence
+Set-MgUserLicense -UserId $userId -AddLicenses $addLicenses -RemoveLicenses @()
