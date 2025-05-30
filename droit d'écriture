@@ -1,0 +1,3 @@
+
+#Autorisation ecriture , AD et assignement de licence
+Connect-MgGraph -Scopes "User.ReadWrite.All", "Directory.ReadWrite.All", "LicenseAssignment.ReadWrite.All"
